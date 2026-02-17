@@ -558,41 +558,25 @@ export function ScriptsPage() {
             </DialogDescription>
           </DialogHeader>
 
-          <div className="space-y-4 py-4">
-            {stages.map((stage, index) => (
-              <div key={index} className="flex items-center gap-3 p-3 border rounded-lg">
-                <div className="flex-shrink-0">
-                  {stage.status === "completed" && (
-                    <div className="p-1 bg-green-100 rounded-full">
-                      <Check className="size-4 text-green-600" />
-                    </div>
-                  )}
-                  {stage.status === "running" && (
-                    <Loader2 className="size-6 text-blue-600 animate-spin" />
-                  )}
-                  {stage.status === "pending" && (
-                    <div className="p-1 bg-gray-100 rounded-full">
-                      <Clock className="size-4 text-gray-400" />
-                    </div>
-                  )}
-                  {stage.status === "error" && (
-                    <div className="p-1 bg-red-100 rounded-full">
-                      <X className="size-4 text-red-600" />
-                    </div>
-                  )}
-                </div>
-                <div className="flex-1">
-                  <p className={`font-medium ${
-                    stage.status === "completed" ? "text-green-600" :
-                    stage.status === "running" ? "text-blue-600" :
-                    stage.status === "error" ? "text-red-600" :
-                    "text-gray-500"
-                  }`}>
-                    {stage.name}
-                  </p>
-                </div>
+          <div className="flex flex-col items-center justify-center py-16">
+            <div className="relative w-32 h-32 mb-6">
+              {/* Circle track */}
+              <div className="absolute inset-0 border-4 border-gray-200 rounded-full"></div>
+              
+              {/* Rolling dots */}
+              <div className="absolute inset-0 animate-spin" style={{ animationDuration: '1.2s' }}>
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-blue-600 rounded-full"></div>
               </div>
-            ))}
+              <div className="absolute inset-0 animate-spin" style={{ animationDuration: '1.2s', animationDelay: '0.3s' }}>
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-blue-500 rounded-full"></div>
+              </div>
+              <div className="absolute inset-0 animate-spin" style={{ animationDuration: '1.2s', animationDelay: '0.6s' }}>
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-blue-400 rounded-full"></div>
+              </div>
+            </div>
+            
+            <p className="text-lg font-medium text-gray-700">Processing request</p>
+            <p className="text-sm text-gray-500 mt-2">Waiting for API response</p>
           </div>
         </DialogContent>
       </Dialog>
@@ -681,35 +665,25 @@ export function ScriptsPage() {
           )}
 
           {isDeleting && (
-            <div className="space-y-4 py-4">
-              {stages.map((stage, index) => (
-                <div key={index} className="flex items-center gap-3 p-3 border rounded-lg">
-                  <div className="flex-shrink-0">
-                    {stage.status === "completed" && (
-                      <div className="p-1 bg-green-100 rounded-full">
-                        <Check className="size-4 text-green-600" />
-                      </div>
-                    )}
-                    {stage.status === "running" && (
-                      <Loader2 className="size-6 text-red-600 animate-spin" />
-                    )}
-                    {stage.status === "pending" && (
-                      <div className="p-1 bg-gray-100 rounded-full">
-                        <Clock className="size-4 text-gray-400" />
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex-1">
-                    <p className={`font-medium ${
-                      stage.status === "completed" ? "text-green-600" :
-                      stage.status === "running" ? "text-red-600" :
-                      "text-gray-500"
-                    }`}>
-                      {stage.name}
-                    </p>
-                  </div>
+            <div className="flex flex-col items-center justify-center py-16">
+              <div className="relative w-32 h-32 mb-6">
+                {/* Circle track */}
+                <div className="absolute inset-0 border-4 border-gray-200 rounded-full"></div>
+                
+                {/* Rolling dots */}
+                <div className="absolute inset-0 animate-spin" style={{ animationDuration: '1.2s' }}>
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-red-600 rounded-full"></div>
                 </div>
-              ))}
+                <div className="absolute inset-0 animate-spin" style={{ animationDuration: '1.2s', animationDelay: '0.3s' }}>
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-red-500 rounded-full"></div>
+                </div>
+                <div className="absolute inset-0 animate-spin" style={{ animationDuration: '1.2s', animationDelay: '0.6s' }}>
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-red-400 rounded-full"></div>
+                </div>
+              </div>
+              
+              <p className="text-lg font-medium text-gray-700">Deleting replicasets</p>
+              <p className="text-sm text-gray-500 mt-2">Waiting for API response</p>
             </div>
           )}
         </DialogContent>
@@ -1202,41 +1176,25 @@ export function ScriptsPage() {
               </Tabs>
             </div>
           ) : (
-            <div className="space-y-4 py-4">
-              {stages.map((stage, index) => (
-                <div key={index} className="flex items-center gap-3 p-3 border rounded-lg">
-                  <div className="flex-shrink-0">
-                    {stage.status === "completed" && (
-                      <div className="p-1 bg-green-100 rounded-full">
-                        <Check className="size-4 text-green-600" />
-                      </div>
-                    )}
-                    {stage.status === "running" && (
-                      <Loader2 className="size-6 text-green-600 animate-spin" />
-                    )}
-                    {stage.status === "pending" && (
-                      <div className="p-1 bg-gray-100 rounded-full">
-                        <Clock className="size-4 text-gray-400" />
-                      </div>
-                    )}
-                    {stage.status === "error" && (
-                      <div className="p-1 bg-red-100 rounded-full">
-                        <X className="size-4 text-red-600" />
-                      </div>
-                    )}
-                  </div>
-                  <div className="flex-1">
-                    <p className={`font-medium ${
-                      stage.status === "completed" ? "text-green-600" :
-                      stage.status === "running" ? "text-green-600" :
-                      stage.status === "error" ? "text-red-600" :
-                      "text-gray-500"
-                    }`}>
-                      {stage.name}
-                    </p>
-                  </div>
+            <div className="flex flex-col items-center justify-center py-16">
+              <div className="relative w-32 h-32 mb-6">
+                {/* Circle track */}
+                <div className="absolute inset-0 border-4 border-gray-200 rounded-full"></div>
+                
+                {/* Rolling dots */}
+                <div className="absolute inset-0 animate-spin" style={{ animationDuration: '1.2s' }}>
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-green-600 rounded-full"></div>
                 </div>
-              ))}
+                <div className="absolute inset-0 animate-spin" style={{ animationDuration: '1.2s', animationDelay: '0.3s' }}>
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-green-500 rounded-full"></div>
+                </div>
+                <div className="absolute inset-0 animate-spin" style={{ animationDuration: '1.2s', animationDelay: '0.6s' }}>
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-green-400 rounded-full"></div>
+                </div>
+              </div>
+              
+              <p className="text-lg font-medium text-gray-700">Processing Kafka operation</p>
+              <p className="text-sm text-gray-500 mt-2">Waiting for API response</p>
             </div>
           )}
         </DialogContent>

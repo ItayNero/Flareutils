@@ -11,15 +11,15 @@ import { RulesManagementPage } from "./components/RulesManagementPage";
 export const router = createBrowserRouter([
   {
     path: "/",
-    Component: Root,
+    element: <Root />,
     children: [
-      { path: "/", Component: LoginPage },
-      { path: "/home", Component: HomePage },
-      { path: "/scripts", Component: ScriptsPage },
-      { path: "/config", Component: ConfigManagementPage },
-      { path: "/failover", Component: AutomaticFailoverPage },
-      { path: "/system-check", Component: SystemCheckPage },
-      { path: "/rules", Component: RulesManagementPage },
+      { index: true, element: <LoginPage /> },
+      { path: "home", element: <HomePage /> },
+      { path: "scripts", element: <ScriptsPage /> },
+      { path: "config", element: <ConfigManagementPage /> },
+      { path: "failover", element: <AutomaticFailoverPage /> },
+      { path: "system-check", element: <SystemCheckPage /> },
+      { path: "rules", element: <RulesManagementPage /> },
     ],
   },
 ]);
